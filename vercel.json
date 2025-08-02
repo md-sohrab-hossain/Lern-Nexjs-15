@@ -1,0 +1,9 @@
+{
+    "git": {
+        "deploymentEnabled": {
+            "main": true,
+            "8.4-combining-parallel-and-intercepting-route": true,
+            "8.2-paraller-route": true
+        }
+    }
+}
