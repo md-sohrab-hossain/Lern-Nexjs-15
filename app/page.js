@@ -74,7 +74,7 @@ export default function Home() {
             <div>
               <h3 className="mb-2 text-lg font-semibold">4. Error Handling</h3>
               <p className="text-gray-800">
-                Error boundaries are isolated. An error in one route doesn't
+                Error boundaries are isolated. An error in one route does not
                 affect others.
               </p>
             </div>
