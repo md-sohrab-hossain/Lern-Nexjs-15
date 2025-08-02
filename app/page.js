@@ -84,7 +84,7 @@ export default function Home() {
               </h3>
               <p className="text-gray-800">
                 Using (.) or (..) syntax, we can intercept and modify the
-                default routing behavior.
+                default routing behavior
               </p>
             </div>
           </div>
