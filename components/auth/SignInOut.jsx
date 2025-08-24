@@ -20,11 +20,6 @@ const SignInOut = () => {
     }
   };
 
-  // Early return for SSR
-  if (typeof window === 'undefined') {
-    return <Link href="/login" className="hover:text-indigo-600">Login</Link>;
-  }
-
   return (
     <div>
       {isAuthenticated && user ? (

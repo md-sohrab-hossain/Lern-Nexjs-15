@@ -1,23 +1,25 @@
-'use client';
-
 import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
-const SignInOut = dynamic(() => import("./auth/SignInOut"), { ssr: false });
+// Dynamic import to avoid hydration issues and improve performance
+const SignInOut = dynamic(() => import("./auth/SignInOut"), {
+  ssr: false, // Disable server-side rendering for this component
+  loading: () => <span className="text-[#9C9C9C]">Loading...</span>
+});
 
 const Navbar = () => {
   return (
     <nav>
-      <div className="container flex justify-between items-center py-4">
+      <div className="container flex items-center justify-between py-4">
         <div className="nav-brand">
           <Link href="/">
-            <Image 
-              src="/logo.svg" 
-              alt="Eventry" 
-              width={135} 
+            <Image
+              src="/logo.svg"
+              alt="Eventry"
+              width={135}
               height={135}
-              style={{ width: 'auto', height: 'auto' }}
+              style={{ width: "auto", height: "auto" }}
               priority
             />
           </Link>
