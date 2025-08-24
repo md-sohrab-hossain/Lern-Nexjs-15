@@ -14,3 +14,8 @@ export {
   changePassword, 
   deleteUserAccount 
 } from './userActions'
+
+// Event management actions
+export {
+  addInterestedEvent
+} from './eventActions'
