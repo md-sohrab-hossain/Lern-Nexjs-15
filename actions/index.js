@@ -17,5 +17,6 @@ export {
 
 // Event management actions
 export {
-  addInterestedEvent
+  addInterestedEvent,
+  addGoingEvent
 } from './eventActions'

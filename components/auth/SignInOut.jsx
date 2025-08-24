@@ -15,7 +15,6 @@ const SignInOut = () => {
       await dispatch(logoutUser()).unwrap();
       router.push("/login");
     } catch (error) {
-      console.error("Logout error:", error);
       router.push("/login");
     }
   };

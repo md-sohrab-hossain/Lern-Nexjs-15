@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import ActionButtons from "../ActionButtons";
+import EventSchemaScript from "../meta/EventSchemaScript";
 
 const EventCard = ({ event }) => {
   if (!event) {
@@ -21,6 +22,8 @@ const EventCard = ({ event }) => {
   return (
     <div className="overflow-hidden rounded-md bg-[#242526]">
       <div className="relative w-full h-48 bg-gray-700">
+        <EventSchemaScript event={event} />
+
         <Image
           src={imageUrl || "/google-io-2023-1.png"}
           alt={name}
@@ -35,7 +38,7 @@ const EventCard = ({ event }) => {
       <div className="p-3">
         <Link
           href={`/details/${id}`}
-          className="font-bold text-lg text-white hover:text-indigo-400 transition-colors"
+          className="text-lg font-bold text-white transition-colors hover:text-indigo-400"
         >
           {name}
         </Link>
@@ -45,9 +48,10 @@ const EventCard = ({ event }) => {
           <span className="mx-2">|</span>
           <span>{going_ids?.length || 0} Going</span>
         </div>
-        <ActionButtons 
+        <ActionButtons
           eventId={id}
           interestedUserIds={interested_ids}
+          goingUserIds={going_ids}
         />
       </div>
     </div>

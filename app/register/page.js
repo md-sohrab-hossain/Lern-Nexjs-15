@@ -1,6 +1,15 @@
 import Link from 'next/link';
 import RegistrationForm from '@/components/auth/RegistrationForm';
 
+export const metadata = {
+  title: "Register | Eventry",
+  description: "Create your Eventry account and start discovering amazing events in your area.",
+  robots: {
+    index: false, // Don't index auth pages for privacy
+    follow: true,
+  },
+};
+
 const RegistrationPage = () => {
   return (
     <section className="h-screen grid place-items-center">

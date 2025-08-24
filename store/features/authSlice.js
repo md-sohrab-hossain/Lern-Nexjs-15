@@ -33,6 +33,11 @@ const authSlice = createSlice({
       state.user = null;
       state.isAuthenticated = false;
       state.error = null;
+      
+      // Clear localStorage
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('eventry_auth');
+      }
     }
   },
   // For Async Actions - What happens during API calls
@@ -86,6 +91,11 @@ const authSlice = createSlice({
         state.user = null;
         state.isAuthenticated = false;
         state.error = null;
+        
+        // Clear localStorage
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('eventry_auth');
+        }
       })
       // Clear user data even if logout fails
       .addCase(logoutUser.rejected, (state, action) => {
@@ -93,6 +103,11 @@ const authSlice = createSlice({
         state.error = action.payload;
         state.user = null;
         state.isAuthenticated = false;
+        
+        // Clear localStorage
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('eventry_auth');
+        }
       });
   }
 });

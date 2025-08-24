@@ -41,7 +41,9 @@ const LoginForm = () => {
   return (
     <>
       {displayError && (
-        <div className="my-2 text-sm text-red-500">{displayError}</div>
+        <div className="mb-4 p-3 bg-red-600/20 border border-red-500/50 rounded-md text-red-400">
+          <strong>Login Error:</strong> {displayError}
+        </div>
       )}
       <form className="login-form" onSubmit={onSubmit}>
         <div>

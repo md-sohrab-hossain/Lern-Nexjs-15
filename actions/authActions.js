@@ -112,12 +112,14 @@ export async function performLogout() {
     // await invalidateUserTokens(userId)
     // await clearUserSessions(userId)
     
-    // For now, just redirecting
-    redirect('/login')
+    // Clear any server-side sessions here if needed
+    // await clearServerSessions()
+    
   } catch (error) {
-    console.error('Logout error:', error)
-    // Redirect to login page even if error occurs
-    redirect('/login')
+    // Handle error silently
   }
+  
+  // Always redirect to login page (outside try-catch to avoid double redirect)
+  redirect('/login');
 }
 

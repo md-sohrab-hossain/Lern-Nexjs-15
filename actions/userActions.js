@@ -24,7 +24,7 @@ export async function getUserProfile(userId) {
       _id: user._id.toString()
     }
   } catch (error) {
-    console.error('Get user profile error:', error)
+    // Error handled silently
     throw new Error('Failed to fetch user profile')
   }
 }
@@ -60,7 +60,7 @@ export async function updateUserProfile(userId, profileData) {
       _id: updatedUser._id.toString()
     }
   } catch (error) {
-    console.error('Update user profile error:', error)
+    // Error handled silently
     throw new Error(error.message || 'Failed to update user profile')
   }
 }
@@ -99,7 +99,7 @@ export async function changePassword(userId, currentPassword, newPassword) {
 
     return { success: true, message: 'Password changed successfully' }
   } catch (error) {
-    console.error('Change password error:', error)
+    // Error handled silently
     throw new Error(error.message || 'Failed to change password')
   }
 }
@@ -131,7 +131,7 @@ export async function deleteUserAccount(userId, password) {
 
     return { success: true, message: 'Account deleted successfully' }
   } catch (error) {
-    console.error('Delete user account error:', error)
+    // Error handled silently
     throw new Error(error.message || 'Failed to delete account')
   }
 }
