@@ -5,16 +5,32 @@ import ErrorState from "@/components/ui/ErrorState";
 import EmptyState from "@/components/ui/EmptyState";
 import { eventsApi } from "@/lib/api";
 
-const EventListContent = async () => {
+const EventListContent = async ({ query }) => {
   try {
-    const response = await eventsApi.getAll({ cache: 'force-cache' });
+    let response;
+    
+    if (query && query.trim()) {
+      // Use search API when there's a query
+      response = await eventsApi.search(query, { cache: "no-store" });
+    } else {
+      // Use getAll API when no query
+      response = await eventsApi.getAll({ cache: "force-cache" });
+    }
+    
     const allEvents = response.success ? response.data : [];
 
     if (!allEvents || allEvents.length === 0) {
+      const title = query && query.trim() 
+        ? `No events found for "${query}"` 
+        : "No events found at the moment";
+      const subtitle = query && query.trim() 
+        ? "Try searching with different keywords" 
+        : "Check back later for exciting events!";
+      
       return (
         <EmptyState
-          title="No events found at the moment"
-          subtitle="Check back later for exciting events!"
+          title={title}
+          subtitle={subtitle}
         />
       );
     }
@@ -32,10 +48,10 @@ const EventListContent = async () => {
 };
 
 // Main EventList component with Suspense
-const EventList = () => {
+const EventList = ({ query }) => {
   return (
     <Suspense fallback={<LoadingSkeleton count={6} />}>
-      <EventListContent />
+      <EventListContent query={query} />
     </Suspense>
   );
 };

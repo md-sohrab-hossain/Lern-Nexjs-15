@@ -1,4 +1,6 @@
+import { Suspense } from "react";
 import PaymentForm from "@/components/payments/PaymentForm";
+import PaymentFormSkeleton from "@/components/ui/PaymentFormSkeleton";
 import { eventsApi } from "@/lib/api";
 
 export async function generateMetadata({ params: { eventId } }) {
@@ -34,7 +36,9 @@ const PaymentPage = ({ params: { eventId } }) => {
     <section className="container">
       <div className="bg-[#242526] p-6 rounded-lg max-w-xl mx-auto my-12">
         <h2 className="mb-8 text-xl font-bold">Payment Details</h2>
-        <PaymentForm eventId={eventId} />
+        <Suspense fallback={<PaymentFormSkeleton />}>
+          <PaymentForm eventId={eventId} />
+        </Suspense>
       </div>
     </section>
   );

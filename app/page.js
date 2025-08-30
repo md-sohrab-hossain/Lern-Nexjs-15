@@ -3,11 +3,13 @@ import EventList from "@/components/landing/EventList";
 
 export const metadata = {
   title: "Eventry - Discover Amazing Events",
-  description: "Find and join exciting events in your area. From tech conferences to workshops, discover events that match your interests.",
+  description:
+    "Find and join exciting events in your area. From tech conferences to workshops, discover events that match your interests.",
   keywords: "events, conferences, workshops, tech events, networking, learning",
   openGraph: {
     title: "Eventry - Discover Amazing Events",
-    description: "Find and join exciting events in your area. From tech conferences to workshops, discover events that match your interests.",
+    description:
+      "Find and join exciting events in your area. From tech conferences to workshops, discover events that match your interests.",
     type: "website",
     url: "https://eventry.com",
     images: [
@@ -16,22 +18,25 @@ export const metadata = {
         width: 1200,
         height: 630,
         alt: "Eventry - Event Discovery Platform",
-      }
+      },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Eventry - Discover Amazing Events",
-    description: "Find and join exciting events in your area. From tech conferences to workshops, discover events that match your interests.",
+    description:
+      "Find and join exciting events in your area. From tech conferences to workshops, discover events that match your interests.",
     images: ["/google-io-2023-1.png"],
   },
 };
 
-export default function Home() {
+export default function Home({ searchParams }) {
+  const { query } = searchParams || {};
+  
   return (
     <section className="container">
       <Header />
-      <EventList />
+      <EventList query={query} />
     </section>
   );
 }

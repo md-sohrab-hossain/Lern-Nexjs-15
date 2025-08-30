@@ -1,8 +1,11 @@
 import eventService from "@/lib/services/eventService";
 
-export async function GET() {
+export async function GET(request) {
   try {
-    const events = await eventService.getAllEvents();
+    const { searchParams } = new URL(request.url);
+    const searchQuery = searchParams.get('search') || '';
+    
+    const events = await eventService.getAllEvents(searchQuery);
     return Response.json({ success: true, data: events });
   } catch (error) {
     console.error('Error in GET /api/events:', error);

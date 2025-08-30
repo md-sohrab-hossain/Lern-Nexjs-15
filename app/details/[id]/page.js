@@ -1,6 +1,8 @@
+import { Suspense } from "react";
 import HeroSection from "@/components/details/HeroSection";
 import EventDetails from "@/components/details/EventDetails";
 import EventVenue from "@/components/details/EventVenue";
+import EventDetailsSkeleton from "@/components/ui/EventDetailsSkeleton";
 import { eventsApi } from "@/lib/api";
 
 export async function generateMetadata({ params: { id } }) {
@@ -39,7 +41,8 @@ export async function generateMetadata({ params: { id } }) {
   }
 }
 
-const EventDetailsPage = async ({ params: { id } }) => {
+// Event details content component
+const EventDetailsContent = async ({ id }) => {
   let eventInfo = null;
 
   try {
@@ -97,6 +100,14 @@ const EventDetailsPage = async ({ params: { id } }) => {
         </div>
       </section>
     </>
+  );
+};
+
+const EventDetailsPage = async ({ params: { id } }) => {
+  return (
+    <Suspense fallback={<EventDetailsSkeleton />}>
+      <EventDetailsContent id={id} />
+    </Suspense>
   );
 };
 

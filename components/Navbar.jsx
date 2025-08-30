@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
@@ -14,14 +13,14 @@ const Navbar = () => {
       <div className="container flex items-center justify-between py-4">
         <div className="nav-brand">
           <Link href="/">
-            <Image
-              src="/logo.svg"
-              alt="Eventry"
-              width={135}
-              height={135}
-              style={{ width: "auto", height: "auto" }}
-              priority
-            />
+            <div className="flex items-center space-x-2">
+              <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-2 rounded-lg font-bold text-xl">
+                E
+              </div>
+              <span className="text-2xl font-bold text-white">
+                ventry
+              </span>
+            </div>
           </Link>
         </div>
 

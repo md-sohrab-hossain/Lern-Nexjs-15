@@ -1,17 +1,20 @@
+"use client";
+
+import dynamic from "next/dynamic";
+import SearchSkeleton from "@/components/ui/SearchSkeleton";
+
+const Search = dynamic(() => import("./Search"), {
+  ssr: false,
+  loading: () => <SearchSkeleton />,
+});
+
 const Header = () => {
-    return (
-      <div className="flex justify-between">
-        <h1 className="font-bold text-3xl">Discover Events</h1>
+  return (
+    <div className="flex justify-between">
+      <h1 className="font-bold text-3xl">Discover Events</h1>
+      <Search />
+    </div>
+  );
+};
 
-        <div>
-          <input
-            type="text"
-            placeholder="Search..."
-            className="bg-[#27292F] border border-[#CCCCCC]/20 py-1 px-2 rounded-md"
-          />
-        </div>
-      </div>
-    );
-  };
-
-  export default Header;
+export default Header;
